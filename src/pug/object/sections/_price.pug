@@ -1,0 +1,100 @@
+-
+  const course = [
+    {
+      id: 'basic',
+      name: '基本コース',
+      txt: `5,500円　20分通常料金<br>11,000円　50分通常料金<br>16,500円　80分通常料金<br>22,000円　110分通常料金`,
+    },
+    {
+      id: 'one',
+      name: 'コース1<br>初期面接',
+      txt: '初回面接3,000円(50分)<br>2回目面接3,000円(50分)<br><span class="attention">※特別料金2023年末迄</span>',
+    },
+    {
+      id: 'two',
+      name: 'コース2<br>3面接継続',
+      txt: '1面接8,800円(50分)',
+    },
+    {
+      id: 'three',
+      name: 'コース3<br>5面接継続',
+      txt: '1面接7,700円(50分)',
+    },
+    {
+      id: 'four',
+      name: 'コース4<br>10面接継続',
+      txt: '	1面接6,600円(50分)',
+    },
+    {
+      id: 'five',
+      name: 'コース5<br>20面接継続',
+      txt: '1面接5,500円(50分)',
+    },
+    {
+      id: 'six',
+      name: 'コース6<br>研修会･出張面接',
+      txt: '半日30,000円（3時間以内）<br>一日60,000円（昼をはさむ）',
+    },
+    {
+      id: 'seven',
+      name: 'コース7<br>個別相談スペース維持',
+      txt: '月額1,100円<br><span class="attention">※無予約で3ヶ月以降維持の月額料金</span>',
+    },
+  ]
+
+
+section#price(class="price")
+  div(class="container")
+    h2 料金
+    div(class="imgWrapper")
+      img(src='/assets/img/09.jpg' alt='' layout='fill' objectfit='cover')
+  div(class="content")
+    p 最初の連絡で料金は発生しません
+    p 通常1面接(50分)11,000円ですが当面以下の料金でお受けします
+    ul
+      li
+        | 初回面接
+        span.red.fontWeight 3,000円(50分)
+      li
+        | 2回目面接
+        span.red.fontWeight 3,000円(50分)
+    p (2023年12月末迄の期間限定料金)
+    p.fontWeight ◆面接には予約と入金が必要です
+    div(class="btnWrapper")
+      <button class="button">
+        <a href="https://kennetsys.com/wadokenn/01_shokai_soto.html">詳しくはこちらから</a>
+      </button>
+    h3 各コース
+      table
+        tr
+          th コース
+          th 料金
+        each item in course  
+          tr
+            td !{item.name}
+            td !{item.txt}
+    h3 支払い方法
+    h4 銀行でのお支払い
+    .flex-item
+      .imgWrapper
+        img(src='/assets/img/11.jpg' alt='' layout='fill' objectfit='cover')
+      div.fontWeight.mt24.txtWrapper
+        p
+          | ゆうちょ銀行一一八店 (118)
+          br
+          | 普通 2156044
+          br
+          | 名義 カタオカ
+          |           ユミヒト
+        p.mt16
+          | みずほ銀行松本支店 (320)
+          br
+          | 普通 1307898
+          br
+          | 名義 カタオカ
+          |           ユミヒト
+    h4 PayPalでのお支払い
+    .flex-item
+      .imgWrapper
+        img(src='/assets/img/12.jpg' alt='' layout='fill' objectfit='cover')
+      include ./../component/_paypal

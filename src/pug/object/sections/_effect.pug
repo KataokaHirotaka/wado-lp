@@ -1,0 +1,47 @@
+-
+  const videoList = [
+    {
+      video: "/assets/video/Wadoshiroyama_1.mp4",
+      txt: "生き方を変えませんか？"
+    },
+    {
+      video: "/assets/video/Wadoshiroyama_2.mp4",
+      txt: "寄り添って変われるように"
+    },
+    {
+      video: "/assets/video/Wadoshiroyama_3.mp4",
+      txt: "カウンセリングルームWado城山とは"
+    },
+    {
+      video: "/assets/video/Wadoshiroyama_4.mp4",
+      txt: "体験の仕方を変えるカウンセリング"
+    },
+  ]
+section.effect#effect
+  .content
+    h2 効果
+      br._sp
+      | このような方に
+    .imgWrapper
+      img(src="/assets/img/15.jpg", alt="")
+    h3 このような方におすすめします
+    p こころのわだかまりがなくならない<br>いつまでも怖いという思いが拭い去れない<br>何となくやる気が出ない<br>イライラする<br>ストレスを感じている<br>どうしたらいいかわからない<br>自信がない<br>自己肯定感が低い<br>怒りを押さえられない<br>仕事や学校に行けない<br>仲違いしているが関係を改善したい<br>生きることがつらいと感じる<br>いきぐるしい<br>家族に心配ごとがある<br><br>など･･････
+    h3 このようなイメージでご利用ください
+    .videoList-wrapper 
+      ul
+        each item in videoList
+          li
+            p !{item.txt}
+            .videoWrapper
+              video(src=`${item.video}` controls playinline)
+    p こちらの動画やホームページをご覧頂き、わからないことがあればご質問下さい。質問は以下のフォームからお願いします
+    a(href="https://docs.google.com/forms/d/e/1FAIpQLSc3bhof-NlrrQJusQJP87GkcJSpGWsTSCX11iNm5JRCY4JB6Q/viewform") 質問用フォーム
+    h3 どんなことでも
+    .imgWrapper
+      img(src="/assets/img/08.jpg", alt="")
+    .txtWrapper
+      p 上記以外の症状でも、どのようなことも伺います。まずはコンタクトをお取り下さい。お話を聞いた上でお受けできないこともあるかとおもいますがその際はご容赦下さい。
+      p 相談の申込はこのフォームからどうぞ
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfR2LQxb6WqZdzYizIm0ado82jzLEq71lBaK2hPC0njgSobBQ/viewform?usp=sf_link">相談申込フォーム</a>
+      p ご不明点はこちらへ
+      a(href="mailto:wadoshiro@gmail.com") wadoshiro@gmail.com

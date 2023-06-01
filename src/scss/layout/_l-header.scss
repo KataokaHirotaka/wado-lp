@@ -1,0 +1,201 @@
+@use '../foundation/mixin' as mixin;
+@use '../foundation/variable' as var;
+
+.l-header {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 48px;
+  z-index: 300;
+  @include mixin.mq(medium) {
+    height: 80px;
+    background: linear-gradient(-45deg, #c2d2eb, #f1f5fc, #dfe9f8) fixed;
+  }
+  .l-header_inner {
+    display: grid;
+    place-items: center;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .l-header_logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 68px;
+    height: 100%;
+    text-align: center;
+    @include mixin.mq(medium) {
+      width: 80px;
+    }
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 0px;
+    }
+  }
+  .l-headerNavBtn_wrapper {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    @include mixin.mq(medium) {
+      display: none;
+    }
+  }
+  .l-header_navBtn {
+    position: absolute;
+    width: 25px;
+    height: 10px;
+    cursor: pointer;
+    span {
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background-color: #000;
+      transition: transform 0.3s ease-in-out;
+      &:last-child {
+        bottom: 0px;
+      }
+    }
+  }
+
+  // ========== nav ===========
+  .l-header_nav {
+    opacity: 0;
+    position: absolute;
+    top: 48px;
+    z-index: 200;
+    overflow: scroll;
+    width: 100%;
+    height: calc(100vh - 48px);
+    padding: 0px 62px 0px;
+    background: linear-gradient(-45deg, #c2d2eb, #f1f5fc, #dfe9f8) fixed;
+    color: #000;
+    text-align: center;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+    @include mixin.mq(medium) {
+      position: relative;
+      top: 0;
+      overflow: visible;
+      opacity: 1;
+      height: 100%;
+      pointer-events: auto;
+      background-image: none;
+      background-color: transparent;
+    }
+    .l-headerNav_inner {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      @include mixin.mq(medium) {
+        max-width: 640px;
+        margin: 0 auto;
+      }
+    }
+    .l-headerAnchor_links {
+      @include mixin.mq(medium) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      li {
+        margin-top: 20px;
+        opacity: 0;
+        transform: translateY(50px);
+        @include mixin.mq(medium) {
+          opacity: 1;
+          transform: translateY(0);
+          margin-top: 0px;
+        }
+        &:first-child {
+          margin-top: 0px;
+        }
+        a {
+          font-size: 18px;
+          font-weight: 500;
+          cursor: pointer;
+          @include mixin.mq(medium) {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+    .l-headerBtnWrapper {
+      max-width: 250px;
+      min-width: 250px;
+      margin: 32px auto 0;
+      a {
+        width: 100%;
+      }
+    }
+    .l-headerNav_list {
+      margin-top: 32px;
+      padding-top: 36px;
+      border-top: 1px solid #777777;
+      li {
+        position: relative;
+        margin-top: 16px;
+        &:first-child {
+          margin-top: 0px;
+        }
+        &::after {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          width: 6px;
+          height: 6px;
+          margin: auto;
+          border-top: 1px solid #fff;
+          border-right: 1px solid #fff;
+          background-color: transparent;
+          content: '';
+          transform: rotate(45deg);
+        }
+        a {
+          display: inline-block;
+          width: 100%;
+          font-size: 16px;
+          font-weight: 400;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  // ========ナビゲーションが開いた時===========
+  &.is-open {
+    .l-header_navBtn {
+      display: grid;
+      place-items: center;
+      transform-origin: center;
+      span {
+        &:first-child {
+          transform: rotate(45deg);
+        }
+        &:last-child {
+          bottom: auto;
+          transform: rotate(-45deg);
+        }
+      }
+    }
+    .l-header_nav {
+      opacity: 1;
+      pointer-events: auto;
+      .l-headerAnchor_links {
+        li {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+}

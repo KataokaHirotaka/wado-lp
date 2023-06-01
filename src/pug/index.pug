@@ -1,0 +1,18 @@
+extends ./layout/_layout
+
+block meta
+  -
+    const meta = {
+      title:"AGAカウンセリングセンター｜AGAカウンセリングセンター",
+      description: "AGAカウンセリングセンタ-は、どなたでも、お気軽にAGAについてのご質問やカウンセリングをオンラインで受けることができるサービスです。",
+    }
+
+block name
+  - const name = "home"
+
+block contents
+  include ./object/sections/_top
+  include ./object/sections/_effect
+  include ./object/sections/_news
+  include ./object/sections/_contact
+  include ./object/sections/_price

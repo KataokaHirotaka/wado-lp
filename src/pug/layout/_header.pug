@@ -1,0 +1,43 @@
+-
+  const navList = [
+    {
+      txt: 'はじめに',
+      link: '#top',
+    },
+    {
+      txt: '効果',
+      link: '#effect',
+    },
+    //- {
+    //-   txt: '相談',
+    //-   link: '#consult',
+    //- },
+    {
+      txt: 'お知らせ',
+      link: '#news',
+    },
+    {
+      txt: 'ご連絡',
+      link: '#contact',
+    },
+    
+    {
+      txt: '料金',
+      link: '#price',
+    },
+  ]
+
+header.l-header
+  .l-header_inner
+    .l-header_logo
+      img(src="/assets/img/logo.png", alt="WADO城山心理相談室")
+    .l-headerNavBtn_wrapper.js-navBtn
+      .l-header_navBtn
+        span
+        span
+    nav.l-header_nav
+      .l-headerNav_inner
+        ul.l-headerAnchor_links.js-anchor
+          each item in navList
+            li
+              a(href=`${item.link}`) #{item.txt}

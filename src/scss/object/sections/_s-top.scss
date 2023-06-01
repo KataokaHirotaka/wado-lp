@@ -1,0 +1,123 @@
+@use '../../foundation/mixin' as mixin;
+@use '../../foundation/variable' as var;
+
+.top {
+  margin-top: 50px;
+  @include mixin.mq(medium) {
+    margin-top: 80px;
+  }
+  h2 {
+    padding-top: 40px;
+    font-size: 32px;
+    text-align: center;
+    @include mixin.mq(medium) {
+      padding-top: 60px;
+      font-size: 40px;
+    }
+  }
+  & > p {
+    margin-top: 12px;
+    font-weight: 500;
+    font-size: 24px;
+    text-align: center;
+    @include mixin.mq(medium) {
+      font-size: 28px;
+    }
+  }
+  .flex-item {
+    @include mixin.mq(medium) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    &:first-of-type {
+      @include mixin.mq(medium) {
+        flex-direction: row-reverse;
+      }
+    }
+    &:nth-of-type(3) {
+      @include mixin.mq(medium) {
+        flex-direction: row-reverse;
+      }
+    }
+    .imgWrapper {
+      @include mixin.mq(medium) {
+        width: calc(50% - 12px);
+      }
+    }
+    .txtWrapper {
+      @include mixin.mq(medium) {
+        width: calc(50% - 12px);
+      }
+      a {
+        font-weight: bold;
+      }
+    }
+  }
+  .content {
+    margin-top: 40px;
+    padding: 16px 16px 32px;
+    border-radius: 8px;
+    background-color: #fff;
+    @include mixin.mq(medium) {
+      margin-top: 60px;
+      padding: 24px 24px 40px;
+    }
+    h3 {
+      padding-top: 32px;
+      font-weight: bold;
+      font-size: 20px;
+      @include mixin.mq(medium) {
+        font-size: 24px;
+      }
+    }
+    p {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.75;
+      @include mixin.mq(medium) {
+        font-size: 18px;
+      }
+    }
+    a {
+      color: #000080;
+      text-decoration: underline;
+    }
+    ul {
+      margin-top: 16px;
+      li {
+        p {
+          position: relative;
+          margin-top: 2px;
+          &:first-child {
+            margin-top: 0px;
+            padding-left: 16px;
+            &::before {
+              display: block;
+              position: absolute;
+              top: 50%;
+              left: 0;
+              transform: translateY(-50%);
+              width: 8px;
+              height: 8px;
+              border-radius: 9999px;
+              background-color: #000;
+              content: '';
+            }
+          }
+        }
+        .attention {
+          color: #696969;
+          font-size: 14px;
+        }
+      }
+    }
+    .imgWrapper {
+      margin-top: 32px;
+    }
+  }
+  .btnWrapper {
+    margin-top: 20px;
+    text-align: center;
+  }
+}

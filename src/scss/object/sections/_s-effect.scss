@@ -1,0 +1,163 @@
+@use '../../foundation/mixin' as mixin;
+@use '../../foundation/variable' as var;
+
+.effect {
+  margin-top: 80px;
+  @include mixin.mq(medium) {
+    margin-top: 120px;
+  }
+  .content {
+    padding: 0 16px;
+    p {
+      &:last-of-type {
+        margin-top: 60px;
+        font-size: 16px;
+        line-height: 1.75;
+        @include mixin.mq(medium) {
+          font-size: 18px;
+        }
+      }
+    }
+    & > a {
+      display: block;
+      margin-top: 12px;
+      @include mixin.mq(medium) {
+        font-size: 18px;
+      }
+    }
+    .imgWrapper {
+      @include mixin.mq(medium) {
+        max-width: 500px;
+        margin: 24px auto;
+      }
+    }
+    .txtWrapper {
+      p {
+        position: relative;
+        margin-top: 16px;
+        @include mixin.mq(medium) {
+          font-size: 18px;
+        }
+        &:first-child {
+          margin-top: 32px;
+          line-height: 1.75;
+        }
+        &:not(:first-child) {
+          padding-left: 16px;
+          font-weight: bold;
+          &::before {
+            display: block;
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background-color: #000;
+            content: '';
+          }
+        }
+      }
+      a {
+        display: block;
+        margin-top: 12px;
+        @include mixin.mq(medium) {
+          font-size: 18px;
+        }
+      }
+    }
+    .videoList-wrapper {
+      margin-top: 40px;
+      @include mixin.mq(medium) {
+        margin-top: 60px;
+      }
+      ul {
+        li {
+          margin-top: 24px;
+          @include mixin.mq(medium) {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 40px;
+          }
+          &:nth-of-type(2),
+          &:last-of-type {
+            flex-direction: row-reverse;
+          }
+          p {
+            @include mixin.mq(medium) {
+              width: calc(50% - 12px);
+            }
+          }
+          p {
+            font-size: 18px;
+            @include mixin.mq(medium) {
+              font-size: 26px;
+            }
+          }
+        }
+        p {
+          position: relative;
+          padding-left: 16px;
+          font-weight: bold;
+          font-size: 20px;
+
+          &::before {
+            display: block;
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 8px;
+            height: 8px;
+            border-radius: 9999px;
+            background-color: #000;
+            content: '';
+            @include mixin.mq(medium) {
+              top: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  h2 {
+    font-size: 28px;
+    @include mixin.mq(medium) {
+      font-size: 32px;
+      text-align: center;
+    }
+  }
+  h3 {
+    margin-top: 60px;
+    font-size: 24px;
+    @include mixin.mq(medium) {
+      font-size: 28px;
+      text-align: center;
+    }
+    + p {
+      margin-top: 12px;
+      font-weight: 500;
+      line-height: 3;
+      @include mixin.mq(medium) {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
+  }
+
+  .videoWrapper {
+    width: 100%;
+    margin-top: 12px;
+    video {
+      width: 100%;
+    }
+    @include mixin.mq(medium) {
+      width: calc(50% - 12px);
+    }
+  }
+  a {
+    color: navy;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}

@@ -1,0 +1,71 @@
+@use '../foundation/mixin' as mixin;
+@use '../foundation/variable' as var;
+
+.l-footer {
+  position: relative;
+  margin-top: 80px;
+  padding-top: 20px;
+  background-color: #333333;
+  color: #fff;
+  z-index: 50;
+  .l-footer_inner {
+    max-width: 340px;
+    margin: 0 auto;
+    @include mixin.mq(medium) {
+      max-width: 344px;
+    }
+  }
+  .l-footer_logo {
+    width: 128px;
+    height: 46px;
+    margin: 0 auto;
+  }
+  .l-footer_nav {
+    margin-top: 20px;
+    .l-footerNav_list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    .l-footerNavList_item {
+      width: 50%;
+      a {
+        font-size: 12px;
+        cursor: pointer;
+      }
+    }
+  }
+  .l-footer_bottom {
+    display: grid;
+    place-items: center;
+    height: 40px;
+    margin-top: 30px;
+    background-color: #000000;
+    .l-footerBottom_txt {
+      font-family: var.$jost;
+      font-size: 10px;
+    }
+  }
+  .blank {
+    position: relative;
+    &::before,
+    &::after {
+      position: absolute;
+      top: 50%;
+      right: -10px;
+      width: 6px;
+      height: 6px;
+      background-color: transparent;
+      content: '';
+    }
+    &::before {
+      border-left: 1px solid #fff;
+      border-bottom: 1px solid #fff;
+    }
+    &::after {
+      top: 38%;
+      right: -12px;
+      border: 1px solid #fff;
+    }
+  }
+}

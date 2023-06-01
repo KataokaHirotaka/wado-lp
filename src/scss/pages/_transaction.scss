@@ -1,0 +1,55 @@
+@use "./../foundation/mixin" as mixin;
+@use "./../foundation/variable" as var;
+
+.transaction {
+  .wrapper {
+    padding-top: 88px;
+    @include mixin.mq(medium) {
+      padding-top: 123px;
+    }
+  }
+  .container {
+    padding: 0 17px;
+    @include mixin.mq(medium) {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0;
+    }
+  }
+  .terms-ttl {
+    font-size: 24px;
+  }
+  .terms-section {
+    margin-top: 20px;
+    padding-bottom: 20px;
+    background-image: linear-gradient(
+      to right,
+      #b9b9b9,
+      #b9b9b9 2px,
+      transparent 2px,
+      transparent 6px
+    );
+    background-size: 6px 1px;
+    background-position: right bottom;
+    background-repeat: repeat-x;
+    &:first-of-type {
+      margin-top: 40px;
+    }
+    .termsSection-ttl {
+      font-size: 16px;
+    }
+    .termsSection-txt {
+      margin-top: 16px;
+      font-size: 14px;
+    }
+  }
+  .l-footer {
+    margin-top: 40px;
+    .l-footer_inner {
+      // max-width: 807px;
+    }
+    .l-footerNav_list {
+      justify-content: space-between;
+    }
+  }
+}

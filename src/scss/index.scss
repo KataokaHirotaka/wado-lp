@@ -1,0 +1,18 @@
+// Foundation
+@forward './foundation/base';
+
+// Layout
+@forward './layout/layout';
+
+// Object component
+@forward './object/component/c-paypal';
+
+// Object sections
+@forward './object/sections/s-top';
+@forward './object/sections/s-price';
+@forward './object/sections/s-news';
+@forward './object/sections/s-contact';
+@forward './object/sections/s-effect';
+
+// Pages
+@forward './pages/transaction';

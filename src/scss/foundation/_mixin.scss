@@ -1,0 +1,174 @@
+@use "./variable" as var;
+
+// @media screen and (min-width: XXXXpx)
+@mixin mq($breakpoint: medium, $rule: min, $direction: width) {
+  $breakpoint: map_get(var.$mq-breakpoints, $breakpoint);
+  @if $rule == max {
+    $breakpoint: $breakpoint - 1;
+  }
+  @media screen and (#{$rule}-#{$direction}: $breakpoint) {
+    @content;
+  }
+}
+
+// @media screen and (min-width: XXXXpx) and (max-width: XXXXpx)
+@mixin mq-and(
+  $breakpoint-01: medium,
+  $breakpoint-02: large,
+  $rule-01: min,
+  $rule-02: max,
+  $direction-01: width,
+  $direction-02: width
+) {
+  $breakpoint-01: map_get(var.$mq-breakpoints, $breakpoint-01);
+  $breakpoint-02: map_get(var.$mq-breakpoints, $breakpoint-02);
+  @if $rule-01 == max {
+    $breakpoint-01: $breakpoint-01 - 1;
+  }
+  @if $rule-02 == max {
+    $breakpoint-02: $breakpoint-02 - 1;
+  }
+  @media screen and (#{$rule-01}-#{$direction-01}: $breakpoint-01) and (#{$rule-02}-#{$direction-02}: $breakpoint-02) {
+    @content;
+  }
+}
+
+// @media screen and (min-width: XXXXpx) and (max-width: XXXXpx)
+@mixin mq-or(
+  $breakpoint-01: medium,
+  $breakpoint-02: large,
+  $rule-01: min,
+  $rule-02: max,
+  $direction-01: width,
+  $direction-02: width
+) {
+  $breakpoint-01: map_get(var.$mq-breakpoints, $breakpoint-01);
+  $breakpoint-02: map_get(var.$mq-breakpoints, $breakpoint-02);
+  @if $rule-01 == max {
+    $breakpoint-01: $breakpoint-01 - 1;
+  }
+  @if $rule-02 == max {
+    $breakpoint-02: $breakpoint-02 - 1;
+  }
+  @media screen and (#{$rule-01}-#{$direction-01}: $breakpoint-01), screen and (#{$rule-02}-#{$direction-02}: $breakpoint-02) {
+    @content;
+  }
+}
+
+// IE, Edge CSS hack
+@mixin hack-IE() {
+  @at-root _:-ms-lang(x),
+    & {
+    @content;
+  }
+}
+
+// border で arrow 作成.
+@mixin arrow($size: 6px, $rotate: 45deg, $color: #fff) {
+  position: relative;
+  &::after {
+    content: "";
+    display: block;
+    width: $size;
+    height: $size;
+    border: solid $color;
+    border-width: 1px 1px 0 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%) rotate($rotate);
+  }
+}
+
+// 先頭にインデントをつける.
+// \30FB: ナカグロ "・" の Unicode
+@mixin txt-indent($content: "\30FB") {
+  padding-left: 1em;
+  position: relative;
+  &::before {
+    content: $content;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
+
+/*
+  linear-gradient での点線.
+  ::before または ::after 想定.
+
+  $fill-size: 色部分の長さ.
+  $transparent-size: 透明部分の長さ.
+  $color: 線の色.
+  $line-weight: 線の太さ.
+*/
+@mixin dashed-border(
+  $fill-size: 2px,
+  $transparent-size: 2px,
+  $color: #000,
+  $line-weight: 1px
+) {
+  $size: $fill-size + $transparent-size;
+  content: "";
+  display: block;
+  width: 100%;
+  height: $line-weight;
+  background: linear-gradient(
+    to right,
+    $color $fill-size,
+    transparent $fill-size,
+    transparent $size
+  );
+  background-repeat: repeat-x;
+  background-size: $size $line-weight;
+}
+
+@mixin flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// justify-content: space-between を左揃えにする.
+@mixin flex-align-left($width: 25%) {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  &::before,
+  &::after {
+    content: "";
+    display: block;
+    width: $width;
+    height: 0;
+  }
+  &::before {
+    order: 1;
+    // order: -1 で先頭, order: 1 で最後.
+  }
+}
+
+// スクロールバー非表示.
+@mixin hide-scroll-bar() {
+  -ms-overflow-style: none; // IE, Edge
+  scrollbar-width: none; // Firefox
+  &::-webkit-scrollbar {
+    display: none; // Chrome, Safari
+  }
+}
+
+// SP サイズの :active と PCサイズの :hover, :focus の演出を同じにする.
+@mixin hover() {
+  cursor: pointer;
+  @include mq(medium, max) {
+    &:active {
+      @content;
+    }
+  }
+  @include mq(medium) {
+    &:hover,
+    &:focus {
+      @content;
+    }
+  }
+}
